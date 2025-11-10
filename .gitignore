@@ -1,0 +1,25 @@
+# Entornos virtuales
+env/
+venv/
+.env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.sqlite3
+
+# Archivos temporales
+*.log
+*.tmp
+
+# VSCode / IDEs
+.vscode/
+.idea/
+
+# Docker
+*.env
+docker-compose.override.yml
+
+# Configuración local
+config/.env
