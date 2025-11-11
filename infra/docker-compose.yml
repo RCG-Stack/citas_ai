@@ -1,0 +1,33 @@
+
+services:
+  api:
+    build:
+      context: ../backend        # ruta al Dockerfile y al código backend
+      dockerfile: Dockerfile
+    container_name: citas_api
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../backend/config/.env          # nueva ubicación del archivo .env
+    depends_on:
+      - db
+    volumes:
+      - ../backend:/app          # monta el código del backend dentro del contenedor
+    restart: always
+
+  db:
+    image: postgres:15
+    container_name: citas_db
+    environment:
+      POSTGRES_USER: rafadb_admin
+      POSTGRES_PASSWORD: G3nius/23.20S5
+      POSTGRES_DB: citas_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  postgres_data:
+
